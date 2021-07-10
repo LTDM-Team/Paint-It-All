@@ -35,6 +35,6 @@ class Player : MonoBehaviour
     }
     private void Shoot()
     {
-        Debug.Log("*Shoot*");
+        
     }
 }

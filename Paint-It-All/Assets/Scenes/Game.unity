@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2173186354512229644, guid: 098726870c5b2404885ee820848cb3aa, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2173186354512229644, guid: 098726870c5b2404885ee820848cb3aa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -189,7 +189,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8435375875833155148, guid: 1a0e26d20945a904dbf222c350bb117c, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8435375875833155148, guid: 1a0e26d20945a904dbf222c350bb117c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -237,6 +237,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a0e26d20945a904dbf222c350bb117c, type: 3}
+--- !u!1001 &7972391630187668578
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7972391629267158457, guid: 034b438e23c8d7c46967df1c415fa315, type: 3}
+      propertyPath: m_Name
+      value: PaintCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972391629267158460, guid: 034b438e23c8d7c46967df1c415fa315, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972391629267158460, guid: 034b438e23c8d7c46967df1c415fa315, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972391629267158460, guid: 034b438e23c8d7c46967df1c415fa315, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972391629267158460, guid: 034b438e23c8d7c46967df1c415fa315, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7972391629267158463, guid: 034b438e23c8d7c46967df1c415fa315, type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 034b438e23c8d7c46967df1c415fa315, type: 3}
 --- !u!1001 &8324118507349233371
 PrefabInstance:
   m_ObjectHideFlags: 0
