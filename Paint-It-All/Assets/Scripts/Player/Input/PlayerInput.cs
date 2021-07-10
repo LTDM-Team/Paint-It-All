@@ -2,7 +2,7 @@
 
 class PlayerInput : MonoBehaviour, IInput
 {
-    public bool CanShoot() => Input.GetMouseButtonDown(0);
+    public bool CanShoot() => Input.GetMouseButton(0);
 
     public Vector2 GetLookDirection()
     {
