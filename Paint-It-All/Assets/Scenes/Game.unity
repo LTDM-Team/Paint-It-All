@@ -264,9 +264,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7972391629267158463, guid: 034b438e23c8d7c46967df1c415fa315, type: 3}
-      propertyPath: m_Color.a
-      value: 0.8
+    - target: {fileID: 7972391629267158462, guid: 034b438e23c8d7c46967df1c415fa315, type: 3}
+      propertyPath: _textureSize
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 7972391629267158463, guid: 034b438e23c8d7c46967df1c415fa315, type: 3}
       propertyPath: m_SortingLayer
