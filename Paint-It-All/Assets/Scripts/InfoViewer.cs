@@ -23,7 +23,7 @@ public class InfoViewer : MonoBehaviour
     private void Update()
     {
         ConvertTime(_roundTime, out int minutes, out int seconds);
-        _timeText.text = string.Format("Время: {0:d2}:{1:d2}", minutes, seconds);
+        _timeText.text = string.Format("{0:d2}:{1:d2}", minutes, seconds);
 
         _ammoProgressBar.value = (float)_currentAmmo / _maxAmmo;
         _healthProgressBar.value = (float)_currentHealth / _maxHealth;
