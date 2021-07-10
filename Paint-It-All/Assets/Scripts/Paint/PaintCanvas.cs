@@ -121,14 +121,15 @@ class PaintCanvas : MonoBehaviour
         _hasChanges = true;
     }
 
-    private int UnitToPixelSize(int unitSize)
+    private int UnitToPixelSize(float unitSize)
     {
         return (int)(unitSize * _pixelsPerUnit);
     }
     private Vector2Int WorldToPixelPosition(Vector2 position)
     {
-        var pixelX = (int)position.x + (_texture.width / 2);
-        var pixelY = (int)position.y + (_texture.height / 2);
+        var halfSize = _textureSize / 2;
+        var pixelX = UnitToPixelSize(position.x) + halfSize;
+        var pixelY = UnitToPixelSize(position.y) + halfSize;
 
         return new Vector2Int(pixelX, pixelY);
     }

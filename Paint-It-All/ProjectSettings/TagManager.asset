@@ -44,3 +44,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Projectiles
+    uniqueID: 3358624811
+    locked: 0
+  - name: Guns
+    uniqueID: 1354899225
+    locked: 0
+  - name: Players
+    uniqueID: 2163565045
+    locked: 0
