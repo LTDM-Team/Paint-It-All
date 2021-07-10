@@ -6,13 +6,13 @@ class PaintCanvas : MonoBehaviour
     public static PaintCanvas Instance { get; private set; }
     private static Color32 s_transparentColor = new Color32(0, 0, 0, 0);
 
-    [SerializeField] private float _unitSize;
-    [SerializeField] private int _textureSize;
+    [SerializeField] private int _unitSize;
+    [SerializeField] private int _pixelsPerUnit;
 
     private SpriteRenderer _renderer;
     private Texture2D _texture;
+    private int _textureSize;
 
-    private float _pixelsPerUnit;
     private bool _hasChanges;
 
     private void Awake() => Instance = this;
@@ -29,7 +29,7 @@ class PaintCanvas : MonoBehaviour
 
     private void InitializeCanvas()
     {
-        _pixelsPerUnit = _textureSize / _unitSize;
+        _textureSize = _pixelsPerUnit * _unitSize;
 
         var size = new Vector2Int(_textureSize, _textureSize);
         var pivot = new Vector2(0.5f, 0.5f);
