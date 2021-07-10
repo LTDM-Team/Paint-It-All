@@ -2,7 +2,7 @@
 using Cinemachine;
 
 [RequireComponent(typeof(CinemachineVirtualCamera))]
-public class CameraFollowAssigner : MonoBehaviour
+class CameraFollowAssigner : MonoBehaviour
 {
     private CinemachineVirtualCamera _virtualCamera;
 
