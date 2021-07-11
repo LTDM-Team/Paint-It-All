@@ -46,7 +46,15 @@ public class InfoViewer : MonoBehaviour
     [Header("Время")]
     [SerializeField] private TextMeshProUGUI _timeText;
 
-    private const int _secondsInMinute = 60;    
+    private const int _secondsInMinute = 60;
+
+    private void Start()
+    {
+        CurrentAmmo = 5;
+        CurrentHealth = 50;
+        RoundTime = 360;
+    }
+
     public void SetHealth(int maxHealth, int currentHealth)
     {
         _maxHealth = maxHealth;
