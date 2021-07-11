@@ -37,8 +37,7 @@ class PaintCanvas : MonoBehaviour
 
         _texture = new Texture2D(size.x, size.y, TextureFormat.RGBA32, false)
         {
-            filterMode = FilterMode.Point,
-            alphaIsTransparency = true
+            filterMode = FilterMode.Point
         };
         _renderer.sprite = Sprite.Create(_texture, rect, pivot, _pixelsPerUnit);
 
