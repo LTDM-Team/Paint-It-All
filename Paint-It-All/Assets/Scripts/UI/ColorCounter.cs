@@ -23,7 +23,7 @@ class ColorCounter : MonoBehaviour
 
     private void UpdateColors()
     {
-        for (var i = 0; i < _texts.Length; i++)
+        for (var i = 0; i < _colors.Length; i++)
             _texts[i].color = _colors[i];
     }
 
@@ -45,7 +45,7 @@ class ColorCounter : MonoBehaviour
     }
     private void UpdateTexts()
     {
-        for (var i = 0; i < _texts.Length; i++)
+        for (var i = 0; i < _colors.Length; i++)
         {
             var colorProcent = (byte)((double)_colorsCount[i] / _allColorsCount * 100);
             _texts[i].text = string.Format(_format, colorProcent);
