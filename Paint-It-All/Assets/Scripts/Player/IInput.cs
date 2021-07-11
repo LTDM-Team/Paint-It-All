@@ -6,4 +6,5 @@ interface IInput
 
     Vector2 GetMoveDirection();
     Vector2 GetLookDirection();
+    Vector2 GetLookVector();
 }

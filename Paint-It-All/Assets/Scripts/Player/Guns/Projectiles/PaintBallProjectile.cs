@@ -6,7 +6,6 @@ class PaintBallProjectile : MonoBehaviour
 {
     [Header("Fly")]
     [SerializeField] private float _speed;
-    [SerializeField] private float _minFlyDistance;
     [SerializeField] private float _maxFlyDistance;
     [Header("Blow")]
     [SerializeField] private int _blowSizeMin;
@@ -19,12 +18,15 @@ class PaintBallProjectile : MonoBehaviour
     private Vector2 _startPosition;
     private Color32 _color;
 
-    public void Initialize(Color32 color, Vector2 direction)
+    public void Initialize(Color32 color, Vector2 vector)
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _renderer = GetComponent<SpriteRenderer>();
 
-        _targetFlyDistance = Random.Range(_minFlyDistance, _maxFlyDistance);
+        var direction = vector.normalized;
+        var targetDistance = vector.magnitude;
+        _targetFlyDistance = Mathf.Min(targetDistance, _maxFlyDistance);
+
         _startPosition = transform.position;
         _color = color;
 

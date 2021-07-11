@@ -39,6 +39,6 @@ class Player : MonoBehaviour
     }
     private void Shoot()
     {
-        _gun.Shoot(transform.right);
+        _gun.Shoot(_input.GetLookVector());
     }
 }

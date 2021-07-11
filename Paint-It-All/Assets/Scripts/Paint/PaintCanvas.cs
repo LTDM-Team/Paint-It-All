@@ -4,7 +4,6 @@
 class PaintCanvas : MonoBehaviour
 {
     public static PaintCanvas Instance { get; private set; }
-    private static Color32 s_transparentColor = new Color32(0, 0, 0, 0);
 
     [SerializeField] private int _unitSize;
     [SerializeField] private int _pixelsPerUnit;
@@ -27,6 +26,14 @@ class PaintCanvas : MonoBehaviour
         UpdateCanvas();
     }
 
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, _unitSize * Vector2.one);
+    }
+#endif
+
     private void InitializeCanvas()
     {
         _textureSize = _pixelsPerUnit * _unitSize;
@@ -37,8 +44,8 @@ class PaintCanvas : MonoBehaviour
 
         _texture = new Texture2D(size.x, size.y, TextureFormat.RGBA32, false)
         {
-            filterMode = FilterMode.Point,
-            alphaIsTransparency = true
+            wrapMode = TextureWrapMode.Clamp,
+            filterMode = FilterMode.Point
         };
         _renderer.sprite = Sprite.Create(_texture, rect, pivot, _pixelsPerUnit);
 
@@ -49,7 +56,7 @@ class PaintCanvas : MonoBehaviour
         if (_hasChanges == false) return;
         else _hasChanges = false;
 
-        _texture.Apply();
+        _texture.Apply(false);
     }
 
     public int GetCountColor(Color32 color)
@@ -68,7 +75,7 @@ class PaintCanvas : MonoBehaviour
 
     public void Clear()
     {
-        Fill(s_transparentColor);
+        Fill(Color.clear);
     }
     public void Fill(Color32 color)
     {
