@@ -20,15 +20,17 @@ class Timer : MonoBehaviour
     public void StartTimer(int seconds, Action callback)
     {
         StopTimer();
+        gameObject.SetActive(true);
 
         _seconds = seconds;
         _callback = callback;
 
-        InvokeRepeating(nameof(Tick), 1, 1);
+        InvokeRepeating(nameof(Tick), 0, 1);
     }
     public void StopTimer()
     {
         CancelInvoke(nameof(Tick));
+        gameObject.SetActive(false);
     }
 
     private void Tick()

@@ -38,6 +38,9 @@ class Player : MonoBehaviour
     private void Move()
     {
         var direction = _input.GetMoveDirection();
+        if (direction.x == direction.y)
+            direction = new Vector2(direction.x / 1.3f, direction.x / 1.3f);
+
         _rigidbody.velocity = direction * _speed;
     }
     private void Look()

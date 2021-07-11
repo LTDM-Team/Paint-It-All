@@ -20,10 +20,26 @@ class ColorCounter : MonoBehaviour
         CancelInvoke(nameof(Tick));
         InvokeRepeating(nameof(Tick), 0, 1);
     }
+    public Color32 GetBestColor()
+    {
+        var max = _colorsCount[0];
+        var bestColor = _colors[0];
+
+        for (var i = 1; i < _colorsCount.Length; i++)
+        {
+            if (_colorsCount[i] > max)
+            {
+                max = _colorsCount[i];
+                bestColor = _colors[i];
+            }
+        }
+
+        return bestColor;
+    }
 
     private void UpdateColors()
     {
-        for (var i = 0; i < _texts.Length; i++)
+        for (var i = 0; i < _colors.Length; i++)
             _texts[i].color = _colors[i];
     }
 
@@ -45,7 +61,7 @@ class ColorCounter : MonoBehaviour
     }
     private void UpdateTexts()
     {
-        for (var i = 0; i < _texts.Length; i++)
+        for (var i = 0; i < _colors.Length; i++)
         {
             var colorProcent = (byte)((double)_colorsCount[i] / _allColorsCount * 100);
             _texts[i].text = string.Format(_format, colorProcent);
