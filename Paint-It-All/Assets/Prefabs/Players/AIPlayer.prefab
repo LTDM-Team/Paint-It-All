@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cac17dc4375187429dcd4ee55e396bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lookEnemyRange: 20
+  _lookEnemyRange: 5
   _lookPaintRange: 5
   _lookPaintRotationStep: 60
   _cursorSpeed: 3
   _cantPaintMoveCooldown: 0.1
   _changeDirectionTime: 5
+  _attackEnemyTime: 3
 --- !u!1001 &7726150367674776384
 PrefabInstance:
   m_ObjectHideFlags: 0

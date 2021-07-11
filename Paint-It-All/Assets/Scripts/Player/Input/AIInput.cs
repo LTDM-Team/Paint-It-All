@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [RequireComponent(typeof(Player))]
 class AIInput : MonoBehaviour, IInput
@@ -9,14 +10,17 @@ class AIInput : MonoBehaviour, IInput
     [SerializeField] private float _cursorSpeed;
     [SerializeField] private float _cantPaintMoveCooldown;
     [SerializeField] private float _changeDirectionTime;
+    [SerializeField] private float _attackEnemyTime;
 
     private bool _hasEnemyInRange;
+    private bool _isAttacking;
     private Player _closestEnemy;
 
     private bool _canShoot;
     private Vector2 _cursor;
     private Vector2 _cursorTarget;
 
+    private float _currentAttackTime;
     private float _cantPaintTime;
     private float _moveInCurrentDirectionTime;
 
@@ -24,11 +28,13 @@ class AIInput : MonoBehaviour, IInput
     private Vector2 _moveDirection;
 
     private Color32 _color;
-    private int _playerLayerMask;
+    private ContactFilter2D _enemyContactFilter;
 
     private void Start()
     {
-        _playerLayerMask = LayerMask.GetMask("Players");
+        _enemyContactFilter = new ContactFilter2D();
+        _enemyContactFilter.layerMask = LayerMask.GetMask("Players");
+
         _color = GetComponent<Player>().Color;
         _cursor = transform.position;
     }
@@ -48,8 +54,40 @@ class AIInput : MonoBehaviour, IInput
     {
         _hasEnemyInRange = GetClosestEnemyInRange(out var enemy, _lookEnemyRange);
         if (_hasEnemyInRange)
+        {
             _closestEnemy = enemy;
+            _isAttacking = true;
+        }
 
+        if (_isAttacking)
+        {
+            AttackEnemy();
+        }
+        else
+        {
+            Paint();
+            Move();
+        }
+        MoveCursor();
+    }
+
+    private void AttackEnemy()
+    {
+        if (_currentAttackTime >= _attackEnemyTime)
+        {
+            _isAttacking = false;
+            _currentAttackTime = 0;
+        }
+        _currentAttackTime += Time.fixedDeltaTime;
+
+        _cursorTarget = _closestEnemy.transform.position;
+        _canShoot = true;
+
+        _canMove = false;
+        _moveDirection = Vector2.zero;
+    }
+    private void Paint()
+    {
         _canShoot = FindPaintTarget(_lookPaintRotationStep, _lookPaintRange);
         if (_canShoot == false)
         {
@@ -65,11 +103,7 @@ class AIInput : MonoBehaviour, IInput
             _cantPaintTime = 0;
             _canMove = false;
         }
-
-        Move();
-        MoveCursor();
     }
-
     private bool FindPaintTarget(int rotationStep, float maxRange)
     {
         for (var rotation = 0; rotation < 360; rotation += rotationStep)
@@ -93,18 +127,22 @@ class AIInput : MonoBehaviour, IInput
     {
         _cursor = Vector2.Lerp(_cursor, _cursorTarget, Time.fixedDeltaTime * _cursorSpeed);
     }
-
     private void Move()
     {
         if (_canMove)
         {
-            _moveInCurrentDirectionTime += Time.fixedDeltaTime;
-            if (_moveDirection == Vector2.zero || _moveInCurrentDirectionTime >= _changeDirectionTime)
+            var isOutOfBoundsArea = PaintCanvas.Instance.ContainsInCanvas(transform.position) == false;
+            var canChangeDirection = isOutOfBoundsArea
+                || _moveDirection == Vector2.zero
+                || _moveInCurrentDirectionTime >= _changeDirectionTime;
+
+            if (canChangeDirection)
             {
                 _moveDirection = GetRandomDirection();
                 _moveInCurrentDirectionTime = 0;
             }
-
+            _moveInCurrentDirectionTime += Time.fixedDeltaTime;
+            
             _cursorTarget = (Vector2)transform.position + (_moveDirection * _lookEnemyRange);
         }
         else
@@ -113,20 +151,6 @@ class AIInput : MonoBehaviour, IInput
             _moveDirection = Vector2.zero;
         }
     }
-
-    //Vector2 test2;
-    //Vector2 test3;
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = _color;
-    //    Gizmos.DrawSphere(_cursor, 0.5f);
-
-    //    Gizmos.DrawSphere(_cursorTarget, 0.25f);
-    //    Gizmos.DrawSphere(test2, 1f);
-
-    //    //Gizmos.color = Color.black;
-    //    //Gizmos.DrawSphere(test3, 3);
-    //}
 
     private Vector2 GetRandomDirection()
     {
@@ -140,15 +164,19 @@ class AIInput : MonoBehaviour, IInput
     {
         enemy = null;
 
-        var closestEnemyCollider = Physics2D.OverlapCircle(transform.position, range, _playerLayerMask);
-        if (closestEnemyCollider == null)
-            return false;
+        var closestEnemyColliders = new List<Collider2D>();
+        Physics2D.OverlapCircle(transform.position, range, _enemyContactFilter, closestEnemyColliders);
 
-        enemy = closestEnemyCollider.GetComponent<Player>();
-        if (enemy == null)
-            return false;
+        for (var i = 0; i < closestEnemyColliders.Count; i++)
+        {
+            if (closestEnemyColliders[i].gameObject != gameObject)
+            {
+                enemy = closestEnemyColliders[i].GetComponent<Player>();
+                break;
+            }
+        }
 
-        return true;
+        return enemy != null;
     }
     private bool HasMyColorInDirection(Vector2 direction, float range)
     {
