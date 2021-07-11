@@ -49,7 +49,7 @@ class PaintCanvas : MonoBehaviour
         if (_hasChanges == false) return;
         else _hasChanges = false;
 
-        _texture.Apply();
+        _texture.Apply(false);
     }
 
     public int GetCountColor(Color32 color)
