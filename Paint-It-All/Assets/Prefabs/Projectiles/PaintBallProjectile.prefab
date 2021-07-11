@@ -118,7 +118,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 20
-  _minFlyDistance: 2
-  _maxFlyDistance: 10
+  _maxFlyDistance: 5
   _blowSizeMin: 1
   _blowSizeMax: 3
