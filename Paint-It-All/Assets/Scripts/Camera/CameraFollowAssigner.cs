@@ -5,16 +5,13 @@ using Cinemachine;
 class CameraFollowAssigner : MonoBehaviour
 {
     private CinemachineVirtualCamera _virtualCamera;
-
-    private void Start()
+    private void Awake()
     {
         _virtualCamera = GetComponent<CinemachineVirtualCamera>();
-        AssignToPlayer();
     }
 
-    private void AssignToPlayer()
+    public void AssignToPlayer(Player player)
     {
-        var playerInput = FindObjectOfType<PlayerInput>();
-        _virtualCamera.Follow = playerInput.transform;
+        _virtualCamera.Follow = player.transform;
     }
 }

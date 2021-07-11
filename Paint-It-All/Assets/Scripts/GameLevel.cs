@@ -10,6 +10,7 @@ class GameLevel : MonoBehaviour
     [SerializeField] private int _countBots;
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private Color32[] _colors;
+    [SerializeField] private CameraFollowAssigner _cameraFollow;
 
     private void Start()
     {
@@ -37,13 +38,16 @@ class GameLevel : MonoBehaviour
         }
     }
 
-    private Player SpawnPlayer(Vector2 position, Color32 color)
+    private void SpawnPlayer(Vector2 position, Color32 color)
     {
-        return SpawnPlayerObject(_playerPrefab, position, color);
+        var player = SpawnPlayerObject(_playerPrefab, position, color);
+        var cameraFollow = FindObjectOfType<CameraFollowAssigner>();
+
+        cameraFollow.AssignToPlayer(player);
     }
-    private Player SpawnBot(Vector2 position, Color32 color)
+    private void SpawnBot(Vector2 position, Color32 color)
     {
-        return SpawnPlayerObject(_botPrefab, position, color);
+        SpawnPlayerObject(_botPrefab, position, color);
     }
     private Player SpawnPlayerObject(Player prefab, Vector2 position, Color32 color)
     {

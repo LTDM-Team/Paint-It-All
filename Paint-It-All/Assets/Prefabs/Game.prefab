@@ -107,6 +107,7 @@ MonoBehaviour:
     rgba: 4293656320
   - serializedVersion: 2
     rgba: 4288282368
+  _cameraFollow: {fileID: 2347719681382354569}
 --- !u!1 &1481384470387313956
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +290,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8324118507646972322, guid: 3a595e1ead6ce5442b45334c0c01e5a7, type: 3}
   m_PrefabInstance: {fileID: 7425269196634886666}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2347719681382354569 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5160874908777946243, guid: 3a595e1ead6ce5442b45334c0c01e5a7, type: 3}
+  m_PrefabInstance: {fileID: 7425269196634886666}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be8c2cfea7574b4cbddb43754e189f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8803816683480217779
 PrefabInstance:
   m_ObjectHideFlags: 0
