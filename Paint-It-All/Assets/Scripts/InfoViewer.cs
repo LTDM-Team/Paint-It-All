@@ -9,7 +9,7 @@ public class InfoViewer : MonoBehaviour
         set
         {
             _currentHealth = value;
-            _healthProgressBar.value = _currentHealth / _maxHealth;
+            _healthProgressBar.value = (float)_currentHealth / _maxHealth;
         }
     }
     private int _currentHealth;
@@ -19,7 +19,7 @@ public class InfoViewer : MonoBehaviour
         set
         {
             _currentAmmo = value;
-            _ammoProgressBar.value = _currentAmmo / _maxAmmo;
+            _ammoProgressBar.value = (float)_currentAmmo / _maxAmmo;
         }
     }
     private int _currentAmmo;
