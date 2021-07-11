@@ -81,6 +81,7 @@ class PaintCanvas : MonoBehaviour
         var position = WorldToPixelPosition(worldPosition);
         return _texture.GetPixel(position.x, position.y);
     }
+
     public Vector2 GetRandomWorldPosition()
     {
         var x = Random.Range(-_unitSize, _unitSize);
@@ -88,6 +89,14 @@ class PaintCanvas : MonoBehaviour
 
         return new Vector2(x, y);
     }
+    public bool ContainsInCanvas(Vector2 worldPosition)
+    {
+        return worldPosition.x > -_unitSize
+            && worldPosition.x < _unitSize
+            && worldPosition.y > -_unitSize
+            && worldPosition.y < _unitSize;
+    }
+
 
     public void Clear()
     {
