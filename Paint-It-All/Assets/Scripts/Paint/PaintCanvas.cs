@@ -72,6 +72,22 @@ class PaintCanvas : MonoBehaviour
 
         return count;
     }
+    public bool HasColorIn(Vector2 worldPosition, Color32 color)
+    {
+        return GetColorIn(worldPosition).Equals(color);
+    }
+    public Color32 GetColorIn(Vector2 worldPosition)
+    {
+        var position = WorldToPixelPosition(worldPosition);
+        return _texture.GetPixel(position.x, position.y);
+    }
+    public Vector2 GetRandomWorldPosition()
+    {
+        var x = Random.Range(-_unitSize, _unitSize);
+        var y = Random.Range(-_unitSize, _unitSize);
+
+        return new Vector2(x, y);
+    }
 
     public void Clear()
     {
