@@ -1,12 +1,18 @@
 ﻿using UnityEngine;
 
-class PaintGun : MonoBehaviour, IGun
+class PaintGun : MonoBehaviour
 {
     [SerializeField] private PaintBallProjectile _projectilePrefab;
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private float _cooldown;
 
+    private Color32 _color;
     private float _lastShootTime = float.NegativeInfinity;
+
+    public void Initialize(Color32 color)
+    {
+        _color = color;
+    }
 
     public void Shoot(Vector2 vector)
     {
@@ -24,6 +30,6 @@ class PaintGun : MonoBehaviour, IGun
     private void SpawnProjectile(Vector2 direction)
     {
         var projectile = Instantiate(_projectilePrefab, _spawnPoint.position, Quaternion.identity, null);
-        projectile.Initialize(Color.yellow, direction);
+        projectile.Initialize(_color, direction);
     }
 }

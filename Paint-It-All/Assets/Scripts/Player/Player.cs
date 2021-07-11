@@ -1,23 +1,31 @@
 using UnityEngine;
 
 [RequireComponent(typeof(IInput))]
-[RequireComponent(typeof(IGun))]
+[RequireComponent(typeof(PaintGun))]
 [RequireComponent(typeof(Rigidbody2D))]
 class Player : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer _visual;
     [SerializeField] private float _speed;
 
+    private Color32 _color;
+
     private IInput _input;
-    private IGun _gun;
+    private PaintGun _gun;
     private Rigidbody2D _rigidbody;
 
-    private void Start()
+    public void Initialize(Color32 color)
     {
         _input = GetComponent<IInput>();
-        _gun = GetComponent<IGun>();
-
+        _gun = GetComponent<PaintGun>();
         _rigidbody = GetComponent<Rigidbody2D>();
+
+        _gun.Initialize(color);
+
+        _color = color;
+        _visual.color = color;
     }
+
     private void Update()
     {
         Move();
