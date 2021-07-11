@@ -19,6 +19,7 @@ class GameLevel : MonoBehaviour
     [SerializeField] private CameraFollowAssigner _cameraFollow;
     [SerializeField] private ColorCounter _colorCounter;
     [SerializeField] private EndRoundTitle _endRoundTitle;
+    [SerializeField] private AudioSource _audioSource;
 
     private List<Color32> _usedColors = new List<Color32>();
 
@@ -56,6 +57,12 @@ class GameLevel : MonoBehaviour
     private void StartColorCounter()
     {
         _colorCounter.StartCount(_usedColors.ToArray());
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+            _audioSource.mute = !_audioSource.mute;
     }
 
     private void OnRoundTimeEnd()
