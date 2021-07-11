@@ -8,12 +8,12 @@ class PaintGun : MonoBehaviour, IGun
 
     private float _lastShootTime = float.NegativeInfinity;
 
-    public void Shoot(Vector2 direction)
+    public void Shoot(Vector2 vector)
     {
         if (CanShoot() == false) return;
         else _lastShootTime = Time.time;
 
-        SpawnProjectile(direction);
+        SpawnProjectile(vector);
     }
     private bool CanShoot()
     {
