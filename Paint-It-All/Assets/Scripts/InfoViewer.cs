@@ -30,7 +30,7 @@ public class InfoViewer : MonoBehaviour
         {
             _roundTime = value;
             ConvertTime(_roundTime, out int minutes, out int seconds);
-            _timeText.text = string.Format("Время: {0:d2}:{1:d2}", minutes, seconds);
+            _timeText.text = string.Format("{0:d2}:{1:d2}", minutes, seconds);
         }
     }
     private int _roundTime;
