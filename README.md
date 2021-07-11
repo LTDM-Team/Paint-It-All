@@ -1,2 +1,3 @@
-# Paint-It-All
-Game for Stepico game jam 2021
+# Paint It All!
+A game for Stepico Game Jam 2021   
+Made by Taburetka Squad
