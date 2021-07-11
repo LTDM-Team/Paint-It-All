@@ -5,16 +5,22 @@ using UnityEngine;
 
 class GameLevel : MonoBehaviour
 {
+    [Header("Spawning")]
     [SerializeField] private Player _playerPrefab;
     [SerializeField] private Player _botPrefab;
     [SerializeField] private int _countBots;
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private Color32[] _colors;
+    [Header("Time")]
+    [SerializeField] private Timer _timer;
+    [SerializeField] private int _roundTimeSeconds;
+    [Header("Hooks")]
     [SerializeField] private CameraFollowAssigner _cameraFollow;
 
     private void Start()
     {
         SpawnEntities();
+        StartTimer();
     }
     private void SpawnEntities()
     {
@@ -37,13 +43,20 @@ class GameLevel : MonoBehaviour
             SpawnBot(position, color);
         }
     }
+    private void StartTimer()
+    {
+        _timer.StartTimer(_roundTimeSeconds, OnRoundTimeEnd);
+    }
+
+    private void OnRoundTimeEnd()
+    {
+        Debug.Log("END");
+    }
 
     private void SpawnPlayer(Vector2 position, Color32 color)
     {
         var player = SpawnPlayerObject(_playerPrefab, position, color);
-        var cameraFollow = FindObjectOfType<CameraFollowAssigner>();
-
-        cameraFollow.AssignToPlayer(player);
+        _cameraFollow.AssignToPlayer(player);
     }
     private void SpawnBot(Vector2 position, Color32 color)
     {

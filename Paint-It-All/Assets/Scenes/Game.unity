@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.12107852, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &100002571 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 524257152874786962, guid: e8da09e82b6f258498eba8955a4fa9f2, type: 3}
+  m_PrefabInstance: {fileID: 7157813403027135939}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d322afc17e449a1418616aeecdb3c8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &1952729865 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1481384470881539433, guid: 2b2e34f159b0b0b40b58f9a6d131adad, type: 3}
@@ -183,6 +194,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1481384470238438195, guid: 2b2e34f159b0b0b40b58f9a6d131adad, type: 3}
+      propertyPath: _timer
+      value: 
+      objectReference: {fileID: 100002571}
+    - target: {fileID: 1481384470238438195, guid: 2b2e34f159b0b0b40b58f9a6d131adad, type: 3}
+      propertyPath: _roundTimeSeconds
+      value: 70
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b2e34f159b0b0b40b58f9a6d131adad, type: 3}
 --- !u!1001 &7157813403027135939
@@ -195,10 +214,6 @@ PrefabInstance:
     - target: {fileID: 4148202401573894804, guid: e8da09e82b6f258498eba8955a4fa9f2, type: 3}
       propertyPath: m_Name
       value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 4148202401573894804, guid: e8da09e82b6f258498eba8955a4fa9f2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7157813403249684784, guid: e8da09e82b6f258498eba8955a4fa9f2, type: 3}
       propertyPath: m_AnchorMax.x
