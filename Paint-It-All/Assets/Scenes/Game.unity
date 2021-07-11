@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -537,6 +537,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8435375876013380870, guid: 1a0e26d20945a904dbf222c350bb117c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8ab9a7d5f01f09a4698a196d2fc73316, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a0e26d20945a904dbf222c350bb117c, type: 3}
 --- !u!224 &1860467351 stripped
@@ -589,13 +593,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af472fabb9261f48b01e408b795b56a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentHealth: 10
   _maxHealth: 100
   _healthProgressBar: {fileID: 1860467352}
-  _currentAmmo: 5
   _maxAmmo: 10
   _ammoProgressBar: {fileID: 2004416291}
-  _roundTime: 360
   _timeText: {fileID: 479960921}
 --- !u!4 &1957724928
 Transform:
