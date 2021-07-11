@@ -66,7 +66,7 @@ class PaintCanvas : MonoBehaviour
 
         for (var i = 0; i < colors.Length; i++)
         {
-            if (colors[i].Equals(color))
+            if (IsEqualColor(colors[i], color))
                 count++;
         }
 
@@ -74,7 +74,8 @@ class PaintCanvas : MonoBehaviour
     }
     public bool HasColorIn(Vector2 worldPosition, Color32 color)
     {
-        return GetColorIn(worldPosition).Equals(color);
+        var checkColor = GetColorIn(worldPosition);
+        return IsEqualColor(checkColor, color);
     }
     public Color32 GetColorIn(Vector2 worldPosition)
     {
@@ -96,7 +97,6 @@ class PaintCanvas : MonoBehaviour
             && worldPosition.y > -_unitSize
             && worldPosition.y < _unitSize;
     }
-
 
     public void Clear()
     {
@@ -174,5 +174,11 @@ class PaintCanvas : MonoBehaviour
             colors[i] = color;
 
         return colors;
+    }
+    private bool IsEqualColor(Color32 color1, Color32 color2)
+    {
+        return color1.r == color2.r
+            && color1.g == color2.g
+            && color1.b == color2.b;
     }
 }

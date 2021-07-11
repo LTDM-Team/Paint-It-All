@@ -16,11 +16,15 @@ class GameLevel : MonoBehaviour
     [SerializeField] private int _roundTimeSeconds;
     [Header("Hooks")]
     [SerializeField] private CameraFollowAssigner _cameraFollow;
+    [SerializeField] private ColorCounter _colorCounter;
+
+    private List<Color32> _usedColors = new List<Color32>();
 
     private void Start()
     {
         SpawnEntities();
         StartTimer();
+        StartColorCounter();
     }
     private void SpawnEntities()
     {
@@ -47,6 +51,10 @@ class GameLevel : MonoBehaviour
     {
         _timer.StartTimer(_roundTimeSeconds, OnRoundTimeEnd);
     }
+    private void StartColorCounter()
+    {
+        _colorCounter.StartCount(_usedColors.ToArray());
+    }
 
     private void OnRoundTimeEnd()
     {
@@ -64,6 +72,8 @@ class GameLevel : MonoBehaviour
     }
     private Player SpawnPlayerObject(Player prefab, Vector2 position, Color32 color)
     {
+        _usedColors.Add(color);
+
         var player = Instantiate(prefab, position, Quaternion.identity);
         player.Initialize(color);
 
