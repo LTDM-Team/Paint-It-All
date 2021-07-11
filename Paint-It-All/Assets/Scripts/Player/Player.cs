@@ -5,10 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 class Player : MonoBehaviour
 {
+    public Color32 Color { get; private set; }
+
     [SerializeField] private SpriteRenderer _visual;
     [SerializeField] private float _speed;
-
-    private Color32 _color;
 
     private IInput _input;
     private PaintGun _gun;
@@ -22,7 +22,7 @@ class Player : MonoBehaviour
 
         _gun.Initialize(color);
 
-        _color = color;
+        Color = color;
         _visual.color = color;
     }
 
