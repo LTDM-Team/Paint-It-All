@@ -120,6 +120,7 @@ MonoBehaviour:
   _roundTimeSeconds: 90
   _cameraFollow: {fileID: 2347719681382354569}
   _colorCounter: {fileID: 4946674756654460689}
+  _endRoundTitle: {fileID: 8969144468098306447}
 --- !u!1 &1481384470387313956
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,6 +557,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8716900991039644164, guid: e8da09e82b6f258498eba8955a4fa9f2, type: 3}
   m_PrefabInstance: {fileID: 8157048962444302981}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8969144468098306447 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 957971013652368138, guid: e8da09e82b6f258498eba8955a4fa9f2, type: 3}
+  m_PrefabInstance: {fileID: 8157048962444302981}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f561f6cb82c93e945a47d493517607c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8535765821928581655 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 524257152874786962, guid: e8da09e82b6f258498eba8955a4fa9f2, type: 3}

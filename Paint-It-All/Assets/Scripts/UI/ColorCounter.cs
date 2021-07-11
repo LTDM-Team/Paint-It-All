@@ -20,6 +20,22 @@ class ColorCounter : MonoBehaviour
         CancelInvoke(nameof(Tick));
         InvokeRepeating(nameof(Tick), 0, 1);
     }
+    public Color32 GetBestColor()
+    {
+        var max = _colorsCount[0];
+        var bestColor = _colors[0];
+
+        for (var i = 1; i < _colorsCount.Length; i++)
+        {
+            if (_colorsCount[i] > max)
+            {
+                max = _colorsCount[i];
+                bestColor = _colors[i];
+            }
+        }
+
+        return bestColor;
+    }
 
     private void UpdateColors()
     {

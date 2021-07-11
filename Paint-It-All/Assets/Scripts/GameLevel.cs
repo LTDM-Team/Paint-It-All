@@ -2,6 +2,7 @@
 using System.Linq;
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 class GameLevel : MonoBehaviour
 {
@@ -17,6 +18,7 @@ class GameLevel : MonoBehaviour
     [Header("Hooks")]
     [SerializeField] private CameraFollowAssigner _cameraFollow;
     [SerializeField] private ColorCounter _colorCounter;
+    [SerializeField] private EndRoundTitle _endRoundTitle;
 
     private List<Color32> _usedColors = new List<Color32>();
 
@@ -58,7 +60,15 @@ class GameLevel : MonoBehaviour
 
     private void OnRoundTimeEnd()
     {
-        Debug.Log("END");
+        var bestColor = _colorCounter.GetBestColor();
+        _endRoundTitle.ShowTitle(bestColor);
+
+        Invoke(nameof(RestartLevel), 3);
+    }
+    private void RestartLevel()
+    {
+        var activeScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(activeScene.buildIndex);
     }
 
     private void SpawnPlayer(Vector2 position, Color32 color)

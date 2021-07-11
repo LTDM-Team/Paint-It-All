@@ -2,11 +2,11 @@
 
 class CachedCamera
 {
-    public static Camera Camera { get; private set; }
-
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    private static void OnSceneLoad()
+    public static Camera Camera
     {
-        Camera = Camera.main;
+        get => _camera != null
+            ? _camera
+            : _camera = Camera.main;
     }
+    private static Camera _camera;
 }
